@@ -9,3 +9,4 @@ RUN apk add --no-cache bash gettext python groff less jq py-pip && \
     pip install awscli
 
 ENTRYPOINT ["aws"]
+CMD ["--version"]
