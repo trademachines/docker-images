@@ -1,17 +1,16 @@
 FROM andreptb/oracle-java:8-alpine
 
-ENV SCALA_VERSION 2.11.8
-ENV SBT_VERSION 0.13.11
-ENV PATH ${PATH}:/usr/share/scala-${SCALA_VERSION}/bin:/usr/share/sbt/bin
+ENV SCALA_VERSION=2.11.8
+ENV SBT_VERSION=0.13.11
+ENV PATH=${PATH}:/usr/share/scala-${SCALA_VERSION}/bin:/usr/share/sbt/bin
 
-RUN apk -U add curl bash \
-    && curl --silent --fail http://downloads.lightbend.com/scala/2.11.8/scala-${SCALA_VERSION}.tgz | gunzip | tar x -C /usr/share/ \
-    && curl -L --silent --fail https://dl.bintray.com/sbt/native-packages/sbt/${SBT_VERSION}/sbt-${SBT_VERSION}.tgz | gunzip | tar x -C /usr/share/ \
-    && rm -rf /usr/share/scala-${SCALA_VERSION}/man \
-    && adduser -D -h /sbt sbt \
-    && mkdir -p /sbt/app && chown -R sbt. /sbt \
-    && apk del build-dependencies \
-    && rm -rf /var/cache/apk/*
+RUN cd "/tmp" && \
+    wget -q "http://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz" && \
+    wget -q "http://dl.bintray.com/sbt/native-packages/sbt/${SBT_VERSION}/sbt-${SBT_VERSION}.tgz" && \
+    gunzip -c "scala-${SCALA_VERSION}.tgz"  | tar x -C /usr/share/ && \
+    gunzip -c "sbt-${SBT_VERSION}.tgz" | tar x -C /usr/share/ && \
+    adduser -D -h /sbt sbt && mkdir -p /sbt/app && chown -R sbt. /sbt && \
+    rm -rf /tmp/* /usr/share/scala-${SCALA_VERSION}/man
 
 USER sbt
 WORKDIR /sbt/app
