@@ -4,7 +4,8 @@ ENV SCALA_VERSION=2.11.8
 ENV SBT_VERSION=0.13.11
 ENV PATH=${PATH}:/usr/share/scala-${SCALA_VERSION}/bin:/usr/share/sbt/bin
 
-RUN cd "/tmp" && \
+RUN apk -U add bash && \
+    cd "/tmp" && \
     wget -q "http://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz" && \
     wget -q "http://dl.bintray.com/sbt/native-packages/sbt/${SBT_VERSION}/sbt-${SBT_VERSION}.tgz" && \
     gunzip -c "scala-${SCALA_VERSION}.tgz"  | tar x -C /usr/share/ && \
