@@ -4,7 +4,7 @@ ENV SCALA_VERSION=2.11.8
 ENV SBT_VERSION=0.13.11
 ENV PATH=${PATH}:/usr/share/scala-${SCALA_VERSION}/bin:/usr/share/sbt/bin
 
-RUN apk -U add bash && \
+RUN apk --no-cache --update add bash && \
     cd "/tmp" && \
     wget -q "http://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz" && \
     wget -q "http://dl.bintray.com/sbt/native-packages/sbt/${SBT_VERSION}/sbt-${SBT_VERSION}.tgz" && \
@@ -15,8 +15,7 @@ RUN apk -U add bash && \
 
 USER sbt
 WORKDIR /sbt/app
-
-VOLUME ["/sbt/app", "/sbt/.ivy2", "/sbt/.sbt"]
+VOLUME ["/sbt/app"]
 
 ENTRYPOINT ["sbt"]
 CMD [ "help" ]
