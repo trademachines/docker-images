@@ -10,7 +10,7 @@ RUN apk --no-cache --update add bash && \
     wget -q "http://dl.bintray.com/sbt/native-packages/sbt/${SBT_VERSION}/sbt-${SBT_VERSION}.tgz" && \
     gunzip -c "scala-${SCALA_VERSION}.tgz"  | tar x -C /usr/share/ && \
     gunzip -c "sbt-${SBT_VERSION}.tgz" | tar x -C /usr/share/ && \
-    mkdir /sbt && ln -s ~/.ivy2 /sbt/.ivy2 && ln -s ~/.sbt /sbt/.sbt \
+    mkdir /sbt && ln -s ~/.ivy2 /sbt/.ivy2 && ln -s ~/.sbt /sbt/.sbt && \
     rm -rf /tmp/* /usr/share/scala-${SCALA_VERSION}/man
 
 WORKDIR /sbt/app
