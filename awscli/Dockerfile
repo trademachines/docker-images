@@ -8,5 +8,8 @@ RUN apk add --no-cache bash gettext python groff less jq py-pip && \
     pip install --upgrade pip && \
     pip install awscli
 
+WORKDIR /usr/share/aws
+VOLUME /usr/share/aws
+
 ENTRYPOINT ["aws"]
 CMD ["--version"]
