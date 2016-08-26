@@ -3,4 +3,7 @@ MAINTAINER aho@trademachines.com
 
 RUN gem install riemann-elasticsearch
 
-ENTRYPOINT ["riemann-elasticsearch"]
+ENTRYPOINT ["sh", "-c"]
+
+# if you want variable substition you need to place your cmd like CMD ["riemann-elasticsearch --host=${HOST} --port=${PORT}"]
+CMD ["riemann-elasticsearch"]
