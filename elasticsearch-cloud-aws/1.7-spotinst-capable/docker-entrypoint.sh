@@ -11,7 +11,7 @@ if [ -f /sys/hypervisor/uuid ] || [ `head -c 3 /sys/hypervisor/uuid` == ec2 ]; t
     lifecycle='normal'
   fi
 
-  echo "EC2_INSTANCE_LIFECYCLE=$lifecycle" >>/etc/environment
+  export EC2_INSTANCE_LIFECYCLE=$lifecycle
 fi
 
 # Add elasticsearch as command if needed
