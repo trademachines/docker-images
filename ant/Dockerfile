@@ -4,7 +4,7 @@ ENV ANT_VERSION=1.9.7
 ENV PATH=${PATH}:/usr/share/apache-ant-${ANT_VERSION}/bin
 
 RUN cd /tmp \
-    && wget -q "http://apache.openmirror.de/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz" \
+    && wget -q "https://www.apache.org/dist/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz" \
     && gunzip -c "apache-ant-${ANT_VERSION}-bin.tar.gz"  | tar x -C /usr/share/
 
 WORKDIR /usr/share/ant
