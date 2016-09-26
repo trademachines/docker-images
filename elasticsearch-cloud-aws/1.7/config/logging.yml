@@ -12,21 +12,21 @@ logger:
 appender:
   file:
     type: file
-    file: /usr/share/elasticsearch/logs/elasticsearch.log
+    file: /var/log/elasticsearch.log
     layout:
       type: pattern
       conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
 
   slowlog_index:
     type: file
-    file: /usr/share/elasticsearch/logs/slowlog_index.log
+    file: /var/log/elasticsearch_slowlog_index.log
     layout:
       type: pattern
       conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
 
   slowlog_search:
     type: file
-    file: /usr/share/elasticsearch/logs/slowlog_search.log
+    file: /var/log/elasticsearch_slowlog_search.log
     layout:
       type: pattern
       conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
