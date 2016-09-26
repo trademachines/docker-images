@@ -15,18 +15,18 @@ appender:
     file: /var/log/elasticsearch.log
     layout:
       type: pattern
-      conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
+      conversionPattern: "[docker:elasticsearch] [%d{ISO8601}][%p][%c] %m%n"
 
   slowlog_index:
     type: file
     file: /var/log/elasticsearch_slowlog_index.log
     layout:
       type: pattern
-      conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
+      conversionPattern: "[docker:elasticsearch_slowlog_index] [%d{ISO8601}][%-5p][%-25c] %m%n"
 
   slowlog_search:
     type: file
     file: /var/log/elasticsearch_slowlog_search.log
     layout:
       type: pattern
-      conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
+      conversionPattern: "[docker:elasticsearch_slowlog_search] [%d{ISO8601}][%-5p][%-25c] %m%n"

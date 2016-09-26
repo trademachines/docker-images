@@ -2,7 +2,8 @@ FROM alpine:3.4
 
 RUN apk --no-cache add rsyslog \
     && mkdir -p /etc/rsyslog.d \
-    && mkdir -p /var/spool/rsyslog
+    && mkdir -p /var/spool/rsyslog \
+    && chmod o+w -R /var/log
 
 COPY rsyslog.conf /etc/rsyslog.conf
 COPY loggly.conf /etc/rsyslog.d/loggly.conf
