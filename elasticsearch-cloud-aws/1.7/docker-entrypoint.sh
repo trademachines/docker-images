@@ -2,7 +2,7 @@
 
 set -e
 
-if [ -f /sys/hypervisor/uuid ] || [ `head -c 3 /sys/hypervisor/uuid` == ec2 ]; then
+if [[ -f /sys/hypervisor/uuid ]] && [[ `head -c 3 /sys/hypervisor/uuid` == ec2 ]]; then
   instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
   region=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | rev | cut -c 2- | rev)
   lifecycle=$(aws ec2 describe-instances --region $region --instance-ids $instance_id --query 'Reservations[0].Instances[0].InstanceLifecycle' --output text)
