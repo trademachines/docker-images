@@ -15,18 +15,18 @@ appender:
     file: /var/log/elasticsearch.log
     layout:
       type: pattern
-      conversionPattern: "timestamp=%d{ISO8601};severity=%p;category=%c;message=%m%n"
+      conversionPattern: "type=elasticsearch;timestamp=%d{ISO8601};severity=%p;category=%c;message=%m%n"
 
   slowlog_index:
     type: file
     file: /var/log/elasticsearch_slowlog_index.log
     layout:
       type: pattern
-      conversionPattern: "timestamp=%d{ISO8601};severity=%p;category=%c;message=%m%n"
+      conversionPattern: "type=elasticsearch_slowlog_index;timestamp=%d{ISO8601};severity=%p;category=%c;message=%m%n"
 
   slowlog_search:
     type: file
     file: /var/log/elasticsearch_slowlog_search.log
     layout:
       type: pattern
-      conversionPattern: "timestamp=%d{ISO8601};severity=%p;category=%c;message=%m%n"
+      conversionPattern: "type=elasticsearch_slowlog_search;timestamp=%d{ISO8601};severity=%p;category=%c;message=%m%n"
