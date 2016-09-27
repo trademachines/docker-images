@@ -20,7 +20,16 @@ for t in $LOGGLY_TAGS; do
   tags="$tags tag=\\\\\"${t}\\\\\""
 done
 
-echo $tags
+token=none
+
+if [ -n "${LOGGLY_TOKEN}" ]; then
+  token=${LOGGLY_TOKEN}
+elif [ -n "${LOGGLY_SERVICE_KEY}" ]; then
+  token=${LOGGLY_SERVICE_KEY}
+elif [ -n "${LOGGING_SERVICE_KEY}" ]; then
+  token=${LOGGING_SERVICE_KEY}
+fi
+
 
 sed -i "s/LOGGLY_TOKEN/$LOGGLY_TOKEN/g" /etc/rsyslog.d/loggly.conf
 sed -i "s/ LOGGLY_TAGS/$tags/g" /etc/rsyslog.d/loggly.conf
