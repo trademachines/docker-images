@@ -31,7 +31,7 @@ elif [ -n "${LOGGING_SERVICE_KEY}" ]; then
 fi
 
 
-sed -i "s/LOGGLY_TOKEN/$LOGGLY_TOKEN/g" /etc/rsyslog.d/loggly.conf
+sed -i "s/LOGGLY_TOKEN/$token/g" /etc/rsyslog.d/loggly.conf
 sed -i "s/ LOGGLY_TAGS/$tags/g" /etc/rsyslog.d/loggly.conf
 
 rsyslogd -n
