@@ -10,7 +10,6 @@ RUN apt-get update \
   && yes '' | pecl install apcu \
 	&& docker-php-ext-install mcrypt mbstring zip pdo_mysql \
   && docker-php-ext-enable apcu
-  && echo "pm.status_path = /fpm-status"
 
 COPY php.ini ${PHP_INI_DIR}/php.ini
 COPY fpm-status.conf /usr/local/etc/php-fpm.d/fpm-status.conf
