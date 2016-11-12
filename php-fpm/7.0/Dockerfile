@@ -2,7 +2,7 @@ FROM php:7.0-fpm
 
 # TM customization
 RUN apt-get update \
-  && apt-get install -y git libmcrypt-dev zlib1g-dev \
+  && apt-get install -y libmcrypt-dev zlib1g-dev \
   && php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php \
   && php composer-setup.php \
   && php -r "unlink('composer-setup.php');" \
