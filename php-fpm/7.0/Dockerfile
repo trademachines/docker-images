@@ -12,7 +12,7 @@ RUN apt-get update \
   && docker-php-ext-enable apcu
 
 COPY php.ini ${PHP_INI_DIR}/php.ini
-COPY fpm-status.conf /usr/local/etc/php-fpm.d/fpm-status.conf
+COPY zz-trademachines.conf /usr/local/etc/php-fpm.d/zz-trademachines.conf
 
 EXPOSE 9000
 WORKDIR /var/www/html
