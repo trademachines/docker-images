@@ -9,7 +9,7 @@ RUN apt-get update \
   && mv composer.phar /usr/local/bin/composer \
   && yes '' | pecl install apcu \
 	&& docker-php-ext-install mcrypt mbstring zip pdo_mysql \
-  && docker-php-ext-enable apcu
+  && docker-php-ext-enable apcu opcache
 
 COPY php.ini ${PHP_INI_DIR}/php.ini
 COPY zz-trademachines.conf /usr/local/etc/php-fpm.d/zz-trademachines.conf
