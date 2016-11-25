@@ -1,4 +1,4 @@
-FROM hashicorp/terraform:0.7.4
+FROM hashicorp/terraform:0.7.9
 
 ENV SPOTINST_TERRAFORM_VERSION=0.7.4
 ENV TERRAGRUNT_VERSION=0.1.1
