@@ -1,4 +1,4 @@
-FROM elasticsearch:1.7.5
+FROM elasticsearch:1.7.6
 
 RUN bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.7.1 \
     && bin/plugin install lmenezes/elasticsearch-kopf/v1.6.2 \
