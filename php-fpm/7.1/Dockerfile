@@ -1,5 +1,8 @@
 FROM php:7.1-fpm
 
+ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV COMPOSER_HOME=/composer
+
 # TM customization
 RUN apt-get update \
   && apt-get install -y libmcrypt-dev zlib1g-dev \
@@ -8,7 +11,7 @@ RUN apt-get update \
   && php -r "unlink('composer-setup.php');" \
   && mv composer.phar /usr/local/bin/composer \
   && yes '' | pecl install apcu \
-	&& docker-php-ext-install mcrypt mbstring zip pdo_mysql \
+  && docker-php-ext-install mcrypt mbstring zip pdo_mysql \
   && docker-php-ext-enable apcu opcache
 
 COPY php.ini ${PHP_INI_DIR}/php.ini
