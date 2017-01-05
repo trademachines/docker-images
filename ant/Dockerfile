@@ -1,6 +1,6 @@
 FROM andreptb/oracle-java:8-alpine
 
-ENV ANT_VERSION=1.9.7
+ENV ANT_VERSION=1.10.0
 ENV PATH=${PATH}:/usr/share/apache-ant-${ANT_VERSION}/bin
 
 RUN apk --no-cache --virtual=build-dependencies add curl \
