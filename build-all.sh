@@ -4,6 +4,7 @@ set -ev
 
 function build_push {
   if [ -f "$2/Dockerfile" ]; then
+    echo "Building ${1} in directory ${2}"
     docker build -t "$1" "$2"
     docker push "$1"
   fi
