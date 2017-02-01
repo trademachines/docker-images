@@ -6,12 +6,14 @@ if [[ -f /sys/hypervisor/uuid ]] && [[ `head -c 3 /sys/hypervisor/uuid` == ec2 ]
   instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
   region=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | rev | cut -c 2- | rev)
   lifecycle=$(aws ec2 describe-instances --region $region --instance-ids $instance_id --query 'Reservations[0].Instances[0].InstanceLifecycle' --output text)
+  private_ip=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
 
   if [ $lifecycle == 'None' ]; then
     lifecycle='normal'
   fi
 
   export EC2_INSTANCE_LIFECYCLE=$lifecycle
+  export EC2_PRIVATE_IP=$private_ip
 fi
 
 # Add elasticsearch as command if needed
