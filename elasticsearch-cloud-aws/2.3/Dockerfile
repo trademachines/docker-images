@@ -5,4 +5,6 @@ RUN bin/plugin install cloud-aws \
     && usermod -u 1000 elasticsearch \
     && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
 
+COPY docker-entrypoint.sh /
+
 ENTRYPOINT ["/docker-entrypoint.sh", "--discovery.type=ec2", "--network.publish_host=_ec2_"]
