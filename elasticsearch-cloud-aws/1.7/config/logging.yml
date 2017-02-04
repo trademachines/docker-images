@@ -1,6 +1,6 @@
 # you can override this using by setting a system property, for example -Des.logger.level=DEBUG
 es.logger.level: WARN
-rootLogger: ${es.logger.level}, file
+rootLogger: ${es.logger.level}, console
 logger:
   # log action execution errors for easier debugging
   action: DEBUG
@@ -10,23 +10,20 @@ logger:
   index.search.slowlog: TRACE, slowlog_search
 
 appender:
-  file:
-    type: file
-    file: /var/log/elasticsearch.log
+  console:
+    type: console
     layout:
       type: pattern
       conversionPattern: "type=elasticsearch;timestamp=%d{ISO8601};severity=%p;category=%c;message=%m%n"
 
   slowlog_index:
-    type: file
-    file: /var/log/elasticsearch_slowlog_index.log
+    type: console
     layout:
       type: pattern
       conversionPattern: "type=elasticsearch_slowlog_index;timestamp=%d{ISO8601};severity=%p;category=%c;message=%m%n"
 
   slowlog_search:
-    type: file
-    file: /var/log/elasticsearch_slowlog_search.log
+    type: console
     layout:
       type: pattern
       conversionPattern: "type=elasticsearch_slowlog_search;timestamp=%d{ISO8601};severity=%p;category=%c;message=%m%n"
