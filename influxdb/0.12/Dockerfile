@@ -27,7 +27,6 @@ RUN mkdir -p ${INFLUXDB_DIR} && \
     rm -rf /tmp/* && \
     apk del .build-deps
 
-ADD types.db /usr/share/collectd/types.db
 ADD config.toml /config/config.toml
 ADD run.sh /run.sh
 RUN chmod +x /*.sh
