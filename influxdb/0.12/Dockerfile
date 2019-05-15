@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.9
 
 # Install InfluxDB
 ENV INFLUXDB_VERSION=0.12.2-1
