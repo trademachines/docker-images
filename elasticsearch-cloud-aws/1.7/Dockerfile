@@ -1,7 +1,7 @@
 FROM elasticsearch:1.7.6
 
-RUN bin/plugin install sydboraa/elasticsearch-cloud-aws \
-    && bin/plugin install sydboraa/elasticsearch-kopf \
+RUN plugin --install cloud-aws --url https://elasticsearch-cloud-aws-jar.s3-eu-west-1.amazonaws.com/elasticsearch-cloud-aws-2.7.1.zip \
+    && plugin --install kopf --url https://elasticsearch-kopf.s3-eu-west-1.amazonaws.com/elasticsearch-kopf-1.6.2.zip \
     && usermod -u 1000 elasticsearch \
     && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch \
     && echo "deb [check-valid-until=no] http://cdn-fastly.deb.debian.org/debian jessie main" > /etc/apt/sources.list.d/jessie.list \
