@@ -4,7 +4,12 @@ services:
   - docker
 
 before_script:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 script:
   - ./build-all.sh
+
+env:
+  global:
+    - secure: "CCyNpsrQH2Vv+Scou0ClVLAkMR4AI1+aI9GfLINpA6/LGkiQLH7WqZx5VqAsnwFlin38JDXMjB/AV1o3H6T9voJ4SWwRRwrt+bzXvQF7AvFo4SSZr72K5jqX7cXSHFxIMgLYPf5wuveAVhPfy1La/vprTgrIym6S/Z0J6M14yrlHt8EQAAirWqRmOeLxH4RXtyVrZ2XL9NE+RA0aJg6pFLvOXX4mj6Scn/k5RjEPjyhHd4NOv9Ktiue/cIigqnPjxaNNypf04+3wvhS3vY1h4pzlTyq7AyQ8nb44SuFNPgEzfOpC1/cZtD1KTXrRTuKjwcBQ41U2JfIOHWOvS1+46tzaiu+kw7cG09nl7uqeDmgXjSzErdKyt/2H0xcbVP/Voi/QeztTOBdbkgiBgl7zT16+fGECJG22dMfF9BOEbnGSrdAW0zTRQZDN+8EIVYKOlpSHPvA8VqdQvQmM3JpGaBYt4PbEs9aNZNYTJcEL1GOm2+qnm+P8RTcVEG83DTGoiw3jJhQ6S2mc8YHSKYdBzpWPNAM06V7Ot1cfX/h7uiTFEAPTFEhLybtRj1iTXBGBcq5Nj2YbQ/aKjHr0eQ4u9ZQtfxg+fuznXEn9W36qCtj/f/ZJHxdvmZPcfWV1Y81+520C5VqFdODkH4CtnEVNa55lw2NZ0ltoUs/JeCPU1eg="
+    - secure: "G5pGoil6eTjgyeDQl+bRDr9eRTtIyi9HkQyzF8el21R5qwvbfD4D7nnqCDaW3ONvLukxKtY+0s/e/GSFlJYC9CtF9hPQ2TQPSvANFZ3xrbVrMtUgE46E7v7PyENZIS/BKqaDIz/xpjyFIMbtm1BdEvicEvCjNJWqSX2dlYzzAYOF55+Vkdb5JtSRcva3+bj5u+vO96lK+E30ZUX6VPhx4eibaAiFL9tPIIadY5xephmKkI8lZ9Nc/2bSNMGSHjrwNaE1aSjar+HLisMyF7vvTDIzmm8C+v+mkWb73nitVcJljennukdQMDOeBI+YvlZzaRLtzvtBFe18CwfzCftxx417VA7KZxSh5a2tc+7U7bwt99VSWlbPy+21TAbZCtEiR67FcbskFmJXlc9kdxCXRm0mRFEW2osXcr6shYzaPFEBuZ/w6UQryBsCspLfD/WqNFm8j+c6y08F7TQQ3MOSViyBWwN5N/WjkkYOrIp0nUFgRFIwow48Wu4YUP85u4Wmo5SYjwvS9IVk+3WaIRJ7Tkvke4RNjcloEqiykch5OWsmmTRzX0KrDEo6E+DkyhrywfQZ5VOVx/RmZvZkUJLWPie7xwE42gJwitpMvShWHAzIGmizufdmj0G1CbUETukpRbzYRSoFt+N/6Z7n/3Q5ImCrRouHKOHJEbaryXL+/Hc="
